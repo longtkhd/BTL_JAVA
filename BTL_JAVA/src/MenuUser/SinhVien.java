@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package thong_tin_ca_nhan;
+package MenuUser;
+
 
 import java.util.Objects;
 
@@ -12,9 +13,9 @@ import java.util.Objects;
  * @author Dell
  */
 public class SinhVien {
-    String ma_sv, ho_ten, so_dt,email,dia_chi,so_thich,dan_toc,ton_giao,gioi_tinh,ma_nguoi_dung,ma_nganh;
+    private String ma_sv, ho_ten, so_dt,email,dia_chi,so_thich,dan_toc,ton_giao,gioi_tinh,ma_nguoi_dung,ma_nganh,loai_taikhoan;
 
-    public SinhVien(String ma_sv, String ho_ten, String so_dt, String email, String dia_chi, String so_thich, String dan_toc, String ton_giao, String gioi_tinh, String ma_nguoi_dung, String ma_nganh) {
+    public SinhVien(String ma_sv, String ho_ten, String so_dt, String email, String dia_chi, String so_thich, String dan_toc, String ton_giao, String gioi_tinh, String ma_nguoi_dung, String ma_nganh, String loai_taikhoan) {
         this.ma_sv = ma_sv;
         this.ho_ten = ho_ten;
         this.so_dt = so_dt;
@@ -26,8 +27,18 @@ public class SinhVien {
         this.gioi_tinh = gioi_tinh;
         this.ma_nguoi_dung = ma_nguoi_dung;
         this.ma_nganh = ma_nganh;
+        this.loai_taikhoan = loai_taikhoan;
     }
 
+    public String getLoai_taikhoan() {
+        return loai_taikhoan;
+    }
+
+    public void setLoai_taikhoan(String loai_taikhoan) {
+        this.loai_taikhoan = loai_taikhoan;
+    }
+
+  
     public String getMa_sv() {
         return ma_sv;
     }
