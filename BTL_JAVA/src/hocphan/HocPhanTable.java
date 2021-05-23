@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hocphan;
+package HocPhan;
 
+import AdminQLSV.*;
+import MenuUser.SinhVien;
+import ThoiKhoaBieu.*;
+//import hocphan.*;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,7 +18,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class HocPhanTable extends AbstractTableModel {
     
-    private String name[]={"Mã in", "Mã học phần","Tên học phần","Tín chỉ lý thuyết", "Tín chỉ thực hành", "Tín chỉ khác"};
+    private String name[]={"Mã Học Phần", "Tên Học Phần","Loại Học Phần","Số Tín Lí Thuyết", "Số Tín Thực Hành", "Tổng Tín Chi" };
     private Class classes[]={String.class, String.class, String.class, Integer.class, Integer.class, Integer.class};
     
     ArrayList<HocPhan> ds=new ArrayList<HocPhan>();
@@ -22,6 +26,8 @@ public class HocPhanTable extends AbstractTableModel {
     public HocPhanTable(ArrayList<HocPhan> ds)
    {
        this.ds=ds;
+    
+       
    }
     //lấy số phần tử của listThiSinh
     @Override
@@ -40,12 +46,12 @@ public class HocPhanTable extends AbstractTableModel {
     {
         switch(columnIndex)
         {
-            case 0: return ds.get(rowIndex).getMa_in();
-            case 1: return ds.get(rowIndex).getMa_hp();
-            case 2: return ds.get(rowIndex).getTen_hp();
-            case 3: return ds.get(rowIndex).getTc_lt();
-            case 4: return ds.get(rowIndex).getTc_th();
-            case 5: return ds.get(rowIndex).getTc_khac();            
+            case 0: return ds.get(rowIndex).getMaHp();
+            case 1: return ds.get(rowIndex).getTenHp();
+            case 2: return ds.get(rowIndex).getLoaiHp();
+            case 3: return ds.get(rowIndex).getSoTCLT();
+            case 4: return ds.get(rowIndex).getSoTCTH();
+            case 5: return ds.get(rowIndex).getTongTC();   
             default :return null;
         }
     }

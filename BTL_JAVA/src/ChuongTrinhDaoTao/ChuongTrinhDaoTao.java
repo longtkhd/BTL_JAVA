@@ -21,6 +21,10 @@ public class ChuongTrinhDaoTao {
         this.hinh_thuc_dao_tao = hinh_thuc_dao_tao;
         this.tenng_nganh = tenng_nganh;
     }
+    public ChuongTrinhDaoTao(String ma_nganh)
+    {
+        this.ma_nganh=ma_nganh;
+    }
 
     public String getMa_so() {
         return ma_so;

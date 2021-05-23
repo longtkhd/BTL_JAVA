@@ -118,4 +118,9 @@ public class AdminQLSV {
         this.maNguoidung = maNguoidung;
         this.maNganh = maNganh;
     }
+    //them code
+     public AdminQLSV(String maSv)
+     {
+           this.maSv = maSv;
+     }
 }

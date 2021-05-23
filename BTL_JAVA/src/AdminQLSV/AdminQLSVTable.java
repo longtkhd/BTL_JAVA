@@ -7,7 +7,7 @@ package AdminQLSV;
 
 import MenuUser.SinhVien;
 import ThoiKhoaBieu.*;
-import hocphan.*;
+//import hocphan.*;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -20,9 +20,9 @@ public class AdminQLSVTable extends AbstractTableModel {
     private String name[]={"Mã sinh viên", "Họ tên","Số điện thoại","Email", "Địa chỉ", "Sở thích","Dân tộc","Tôn giáo","Giới tính","Mã người dùng","Mã ngành" };
     private Class classes[]={String.class, String.class, String.class, String.class, String.class, String.class,String.class,String.class,String.class,String.class,String.class};
     
-    ArrayList<SinhVien> ds=new ArrayList<SinhVien>();
+    ArrayList<AdminQLSV> ds=new ArrayList<AdminQLSV>();
 
-    public AdminQLSVTable(ArrayList<SinhVien> ds)
+    public AdminQLSVTable(ArrayList<AdminQLSV> ds)
    {
        this.ds=ds;
     
@@ -45,17 +45,17 @@ public class AdminQLSVTable extends AbstractTableModel {
     {
         switch(columnIndex)
         {
-            case 0: return ds.get(rowIndex).getMa_sv();
-            case 1: return ds.get(rowIndex).getHo_ten();
-            case 2: return ds.get(rowIndex).getSo_dt();
+            case 0: return ds.get(rowIndex).getMaSv();
+            case 1: return ds.get(rowIndex).getHoten();
+            case 2: return ds.get(rowIndex).getSoDt();
             case 3: return ds.get(rowIndex).getEmail();
-            case 4: return ds.get(rowIndex).getDia_chi();
-            case 5: return ds.get(rowIndex).getSo_thich();  
-            case 6: return ds.get(rowIndex).getDan_toc();   
-            case 7: return ds.get(rowIndex).getTon_giao(); 
-            case 8: return ds.get(rowIndex).getGioi_tinh(); 
-            case 9: return ds.get(rowIndex).getMa_nguoi_dung();
-            case 10: return ds.get(rowIndex).getLoai_taikhoan(); 
+            case 4: return ds.get(rowIndex).getDiachiSv();
+            case 5: return ds.get(rowIndex).getSothich();  
+            case 6: return ds.get(rowIndex).getDanToc();   
+            case 7: return ds.get(rowIndex).getTonGiao(); 
+            case 8: return ds.get(rowIndex).getGioiTinh(); 
+            case 9: return ds.get(rowIndex).getMaNguoidung();
+            case 10: return ds.get(rowIndex).getMaNganh(); 
             default :return null;
         }
     }

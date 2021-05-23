@@ -7,7 +7,6 @@ package ThoiKhoaBieu;
 
 import MenuUser.SinhVien;
 import ThongTinGiaDinh.ThongTinGiaDinh;
-import hocphan.HocPhan;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;

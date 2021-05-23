@@ -5,19 +5,19 @@
  */
 package UserInAdmin;
 
+import AdminQLSV.AdminQLSV;
 import MenuUser.*;
 import ChuongTrinhDaoTao.ChuongTrinhDaoTao;
 import ChuongTrinhDaoTao.ChuongTrinhDaoTaoDB;
 import DiemThiUser.DiemThi;
 import DiemThiUser.DiemThiDB;
 import DiemThiUser.DiemThiTable;
+import MenuAdmin.MenuAdminForm;
 import ThoiKhoaBieu.ThoiKhoaBieu;
 import ThoiKhoaBieu.ThoiKhoaBieuDB;
 import ThoiKhoaBieu.ThoiKhoaBieuTable;
 import ThongTinGiaDinh.ThongTinGiaDinh;
 import ThongTinGiaDinh.ThongTinGiaDinhDB;
-import hocphan.HocPhan;
-import hocphan.HocPhanTable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class UserInAdminForm extends javax.swing.JFrame {
     
-    public SinhVien sv;
+    public AdminQLSV sv;
     SinhVienDB db = new SinhVienDB();
     ThongTinGiaDinhDB gd = new ThongTinGiaDinhDB();
     ThoiKhoaBieuDB tkb = new ThoiKhoaBieuDB();
@@ -37,18 +37,18 @@ public class UserInAdminForm extends javax.swing.JFrame {
     ChuongTrinhDaoTaoDB ctdt = new ChuongTrinhDaoTaoDB();
      ArrayList<ThoiKhoaBieu> ds;
      ArrayList<DiemThi> dsDiem;
-    public void setSV(SinhVien s){
+    public void setSV(AdminQLSV s){
         sv = s;
-         txtMSV.setText(sv.getMa_sv());
-         txtHoTen.setText(sv.getHo_ten());
-         txtSDT.setText(sv.getSo_dt());
+         txtMSV.setText(sv.getMaSv());
+         txtHoTen.setText(sv.getHoten());
+         txtSDT.setText(sv.getSoDt());
          txtEmail.setText(sv.getEmail());
-         txtDiaChi.setText(sv.getDia_chi());
-         txtDanToc.setText(sv.getDan_toc());
-         txtTonGiao.setText(sv.getTon_giao());
-         txtSoThich.setText(sv.getSo_thich());
-         cmbGioiTinh.setSelectedItem(sv.getGioi_tinh());
-         ThongTinGiaDinh tgd = gd.getThongTinGiaDinh(sv.getMa_sv());
+         txtDiaChi.setText(sv.getDiachiSv());
+         txtDanToc.setText(sv.getDanToc());
+         txtTonGiao.setText(sv.getTonGiao());
+         txtSoThich.setText(sv.getSothich());
+         cmbGioiTinh.setSelectedItem(sv.getGioiTinh());
+         ThongTinGiaDinh tgd = gd.getThongTinGiaDinh(sv.getMaSv());
          txtId.setText( String.valueOf(tgd.getId()));
          txthtb.setText(tgd.getHotenbo());
          txthtm.setText(tgd.getDiachime());
@@ -59,7 +59,7 @@ public class UserInAdminForm extends javax.swing.JFrame {
          txtNgheNghiepMe.setText(tgd.getNghenghiepme());
          txtAnhChiEm.setText(tgd.getHotenace());
 
-         ChuongTrinhDaoTao ct = ctdt.getChuongTrinhDaoTao(sv.getMa_nganh());
+         ChuongTrinhDaoTao ct = ctdt.getChuongTrinhDaoTao(sv.getMaNganh());
 
          txtMaNganhct.setText(ct.getMa_nganh());
          txtTenNganhct.setText(ct.getTenng_nganh());
@@ -69,11 +69,11 @@ public class UserInAdminForm extends javax.swing.JFrame {
          txtTrinhDoDaoTao.setText(ct.getTrinh_do_dao_tao());
          txtHinhThucDaoTaoct.setText(ct.getHinh_thuc_dao_tao());
          
-          ds = tkb.getThoiKhoaBieu(sv.getMa_nganh());
+          ds = tkb.getThoiKhoaBieu(sv.getMaNganh());
         
           tableThoiKhoaBieu.setModel(new ThoiKhoaBieuTable(ds));
           
-          dsDiem = dtb.getDiemThi(sv.getMa_sv());
+          dsDiem = dtb.getDiemThi(sv.getMaSv());
           DiemThiTable.setModel(new DiemThiTable(dsDiem));
           
          
@@ -216,7 +216,7 @@ public class UserInAdminForm extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Thoát");
+        jButton2.setText("Trở Lại");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -379,7 +379,12 @@ public class UserInAdminForm extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Thoát");
+        jButton4.setText("Trở Lại");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         txtCapNhatt.setText("Cập Nhật");
         txtCapNhatt.addActionListener(new java.awt.event.ActionListener() {
@@ -503,7 +508,12 @@ public class UserInAdminForm extends javax.swing.JFrame {
 
         txtHinhThucDaoTaoct.setEditable(false);
 
-        jButton5.setText("Thoát");
+        jButton5.setText("Trở Lại");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel25.setText("Mã Ngành");
 
@@ -634,7 +644,7 @@ public class UserInAdminForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(225, 225, 225)
                 .addComponent(jLabel29)
-                .addGap(69, 69, 69)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -644,14 +654,14 @@ public class UserInAdminForm extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel29))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel28)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addGap(36, 36, 36)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
         );
@@ -760,7 +770,9 @@ public class UserInAdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            MenuAdminForm t = new MenuAdminForm();
+            t.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed
@@ -800,6 +812,19 @@ public class UserInAdminForm extends javax.swing.JFrame {
     private void txtNienKhoactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNienKhoactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNienKhoactActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        MenuAdminForm t = new MenuAdminForm();
+            t.setVisible(true);
+                          
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         MenuAdminForm t = new MenuAdminForm();
+         t.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
