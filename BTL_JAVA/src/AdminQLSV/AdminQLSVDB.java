@@ -7,6 +7,7 @@ package AdminQLSV;
 
 import ChuongTrinhDaoTao.ChuongTrinhDaoTao;
 import MenuUser.SinhVien;
+import NguoiDung.NguoiDung;
 import ThoiKhoaBieu.ThoiKhoaBieu;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
